@@ -1,0 +1,24 @@
+{
+  "name": "fullstack-test",
+  "description": "fullstack-test for CMP",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:EduardoLeraDiaz/fullstack-test.git"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4",
+    "less": "^2.5.3",
+    "less-plugin-autoprefix": "^1.5.1",
+    "webpack": "^1.12.6",
+    "uglify-js": "~2.4.0"
+  },
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "npm run build:css && run build:js",
+    "build:css": "lessc  style/style.less web/style.css",
+    "build:js": "webpack --config webpack.config.js"
+  }
+}

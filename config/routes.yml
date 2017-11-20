@@ -1,0 +1,17 @@
+profile_get:
+  pattern: '/api/profile/(\d+)'
+  method: 'GET'
+  controller: 'ProfileController'
+  action: 'get'
+
+chat_get:
+  pattern: '/api/chat/(\d+)/(\d+)'
+  method: 'GET'
+  controller: 'ChatController'
+  action: 'get'
+
+chat_post:
+  pattern: '/api/chat/(\d+)/(\d+)'
+  method: 'POST'
+  controller: 'ChatController'
+  action: 'addMessage'

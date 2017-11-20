@@ -1,0 +1,8 @@
+lxc.mount.entry = {{projectDirectory}} project none bind,create=dir,optional 0 0
+lxc.mount.entry = {{userDirectory}}/.ssh home/{{lxcUser}}/.ssh none bind,create=dir,optional 0 0
+
+lxc.net.0.type = veth
+lxc.net.0.link = lxcbr0
+lxc.net.0.flags = up
+lxc.net.0.hwaddr = 00:16:3e:xx:xx:xx
+

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+LXC_CONTAINER_NAME=fullstack-test
+
+LXC_USER=project
+LXC_PASSWORD=project
+
+SCRIPT_DIR=$( cd ${0%/*} && pwd -P )
+PROJECT_DIR=${SCRIPT_DIR%/lxc}
+USER_DIR=$( cd && pwd -P)
+
+cp -f $SCRIPT_DIR/ConfigTemplate $SCRIPT_DIR/config
+sed -i  "s,{{projectDirectory}},$PROJECT_DIR," $SCRIPT_DIR/config
+sed -i  "s,{{userDirectory}},$USER_DIR," $SCRIPT_DIR/config
+sed -i  "s,{{lxcUser}},$LXC_USER," $SCRIPT_DIR/config
+
+sudo lxc-destroy   -fn $LXC_CONTAINER_NAME
+sudo lxc-create    -n $LXC_CONTAINER_NAME -t ubuntu --config=$SCRIPT_DIR/config -- -u $LXC_USER --password $LXC_PASSWORD
+sudo lxc-start     -dn $LXC_CONTAINER_NAME
+sudo lxc-wait      -n $LXC_CONTAINER_NAME -s RUNNING
+sleep 5
+sudo lxc-attach -n $LXC_CONTAINER_NAME -- /project/lxc/provision.sh

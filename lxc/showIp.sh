@@ -1,0 +1,1 @@
+sudo lxc-info -n fullstack-test -iH
