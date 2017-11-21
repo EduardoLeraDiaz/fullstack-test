@@ -1,6 +1,4 @@
 node_modules
 .idea
-web/style.css
-web/app.js
 var
 bin
