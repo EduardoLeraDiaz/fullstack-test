@@ -8,7 +8,7 @@
     "url": "git@github.com:EduardoLeraDiaz/fullstack-test.git"
   },
   "dependencies": {
-    "bootstrap": "^3.3.5",
+    "bootstrap": "^3.3.7",
     "jquery": "^2.1.4",
     "less": "^2.5.3",
     "less-plugin-autoprefix": "^1.5.1",
@@ -17,8 +17,9 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "build": "npm run build:css && run build:js",
+    "build": "npm run build:css && npm run build:js && npm run build:fonts",
     "build:css": "lessc  style/style.less web/style.css",
-    "build:js": "webpack --config webpack.config.js"
+    "build:js": "webpack --config webpack.config.js",
+    "build:fonts": "mkdir -p web/fonts && cp -R node_modules/bootstrap/fonts/* web/fonts/"
   }
 }
